@@ -8,7 +8,7 @@ line =  raw_input().split()
 arr = [int(i) for i in line]
 if all_same(arr):
 	print len(arr)-1
-	quit()
+	#quit()
 #dic = {1:[] , 2:[] , 3:[] , 4:[] , 5:[] , 6:[] , 7:[] , 8:[] , 9:[] }
 pis = []
 
@@ -36,9 +36,10 @@ temp_s=False
 output=0
 x=0
 while x < len(arr):
+	print "x in this level : "+str(x)
 	pis.append(arr[x])
 	print pis
-	print "x in this level : "+str(x)
+	
 
 	if x <= len(arr)-2 and arr[x] == arr[x+1]:
 		if f == False:
@@ -66,13 +67,13 @@ while x < len(arr):
 			f=False
 			if temp_s == True:
 				k=temp
-				x=temp+1
+				x=temp
 				temp_s=False
 				f=True
 				print pis
 				print "X : "+str(x)
 				size = len(pis)
-				for pp in xrange(x,size):
+				for pp in xrange(x+1,size):
 					print pp
 					pis.pop()
 				print "X : "+str(x)
@@ -80,12 +81,45 @@ while x < len(arr):
 	if k == -1:
 		if f == True:
 			output=output+1
-			f=False	
+			f=False
+			if temp_s == True:
+				k=temp
+				x=temp
+				temp_s=False
+				f=True
+				print pis
+				print "X : "+str(x)
+				size = len(pis)
+				for pp in xrange(x+1,size):
+					print pp
+					pis.pop()
+				print "X : "+str(x)
+				print pis	
 	print "k :"+str(k)
 	print f
 	x+=1
+	if x == len(arr):
+		if f == True:
+			output=output+1
+			f=False
+		if temp_s == True:
+			k=temp
+			x=temp+1
+			temp_s=False
+			f=True
+			print pis
+			print "X : "+str(x)
+			size = len(pis)
+			for pp in xrange(x,size):
+				print pp
+				pis.pop()
+			print "X : "+str(x)
+			print pis
+			#break
+	
 
 if f != False:
+	print "in after"
 	output=output+1
 
 print output

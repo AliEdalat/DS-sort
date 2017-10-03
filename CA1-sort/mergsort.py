@@ -48,6 +48,7 @@ def mergeSort(arr,low,high):
 n=int(raw_input())
 line =  raw_input().split()
 arr = [int(i) for i in line]
+arr.reverse()
 mergeSort(arr,0,n-1)
 for i in range(n):
 	print ("%d" %arr[i]),
